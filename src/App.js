@@ -35,7 +35,7 @@ function App() {
       e.preventDefault()
     }
     const name = todoNameRef.current.value;
-    if (name === '') return;
+    if (name.trim() === '') return;
     todoNameRef.current.value = null;
     setTodos(prevTodo => {
       return [...prevTodo, {id: v4(), name: name, complete: false}];
