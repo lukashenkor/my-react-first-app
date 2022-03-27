@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
 import TodoList from "./TodoList";
 import {v4} from 'uuid';
+import todo from "./Todo";
 
 const LOCAL_STORAGE_KEY = 'ToDoApp.todos';
 
@@ -30,6 +31,11 @@ function App() {
     setTodos(newTodos);
   }
 
+  function deleteTodo(id) {
+    const newTodos = todos.filter(todo => todo.id !== id);
+    setTodos(newTodos);
+  }
+
   function handleAddTodo(e) {
     if (e) {
       e.preventDefault()
@@ -51,6 +57,7 @@ function App() {
       <TodoList todos={ todos }
                 toggleTodo={ toggleTodo }
                 isActiveOnly={ isActiveOnly }
+                deleteTodo={ deleteTodo }
       />
       <textarea placeholder="Print your task"
                 ref={ todoNameRef }
